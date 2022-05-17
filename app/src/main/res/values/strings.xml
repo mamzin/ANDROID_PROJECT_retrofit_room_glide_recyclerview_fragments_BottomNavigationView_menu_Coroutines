@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">rentateamtesttask</string>
+    <string name="about_menuitem">About</string>
+    <string name="user_list_menuitem">List of users</string>
+    <string name="user_menuitem">User account</string>
+    <string name="textview">Тестовое задание для Rentateam</string>
+    <string name="first_name">"First name:"</string>
+    <string name="last_name">Last name:</string>
+    <string name="email">Email:</string>
+    <string name="avatarImage">avatar</string>
+    <string name="select_user">Please select user from userlist</string>
+</resources>
