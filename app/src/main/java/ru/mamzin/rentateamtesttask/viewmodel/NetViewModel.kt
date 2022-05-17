@@ -19,7 +19,10 @@ class NetViewModel constructor(private val repository: NetRepository) : ViewMode
         val response = repository.getAllStrings()
         loading.postValue(true)
         response.enqueue(object : Callback<ResponseData<List<User>>> {
-            override fun onResponse(call: Call<ResponseData<List<User>>>, response: Response<ResponseData<List<User>>>) {
+            override fun onResponse(
+                call: Call<ResponseData<List<User>>>,
+                response: Response<ResponseData<List<User>>>
+            ) {
                 dataList.postValue(response.body()?.data)
                 loading.value = false
             }

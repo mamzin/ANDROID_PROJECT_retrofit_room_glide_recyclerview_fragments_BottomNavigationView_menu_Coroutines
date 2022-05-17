@@ -36,15 +36,14 @@ class UserFragment : Fragment() {
                 tvfam.visibility = View.GONE
                 tvemail.visibility = View.GONE
                 tv_emptydata.visibility = View.VISIBLE
-            }
-            else {
+            } else {
                 tv_emptydata.visibility = View.GONE
                 tvname.visibility = View.VISIBLE
                 tvfam.visibility = View.VISIBLE
                 tvemail.visibility = View.VISIBLE
-                tvname!!.text = bundle.getString("first_name")
-                tvfam!!.text = bundle.getString("last_name")
-                tvemail!!.text = bundle.getString("mail")
+                tvname.text = bundle.getString("first_name")
+                tvfam.text = bundle.getString("last_name")
+                tvemail.text = bundle.getString("mail")
                 Glide.with(this)
                     .load(bundle.getString("urlphoto"))
                     .centerCrop()

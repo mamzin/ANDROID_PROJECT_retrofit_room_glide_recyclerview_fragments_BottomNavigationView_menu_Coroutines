@@ -22,9 +22,9 @@ import ru.mamzin.rentateamtesttask.R
 import ru.mamzin.rentateamtesttask.model.DataAdapter
 import ru.mamzin.rentateamtesttask.model.User
 import ru.mamzin.rentateamtesttask.net.RetrofitService
+import ru.mamzin.rentateamtesttask.repository.NetRepository
 import ru.mamzin.rentateamtesttask.viewmodel.DBViewModel
 import ru.mamzin.rentateamtesttask.viewmodel.NetViewModel
-import ru.mamzin.rentateamtesttask.repository.NetRepository
 import ru.mamzin.rentateamtesttask.viewmodel.ViewModelFactory
 
 
@@ -39,7 +39,8 @@ class UserListFragment : Fragment(), DataAdapter.CellClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         val root = inflater.inflate(R.layout.fragment_user_list, container, false)
 
         if (!checkForInternet(requireContext())) {
@@ -54,7 +55,8 @@ class UserListFragment : Fragment(), DataAdapter.CellClickListener {
         recyclerView.adapter = adapter
 
 
-        netViewModel = ViewModelProvider(this, ViewModelFactory(mainRepository))[NetViewModel::class.java]
+        netViewModel =
+            ViewModelProvider(this, ViewModelFactory(mainRepository))[NetViewModel::class.java]
 
         netViewModel.dataList.observe(viewLifecycleOwner) {
             if (it != null) {
@@ -97,7 +99,8 @@ class UserListFragment : Fragment(), DataAdapter.CellClickListener {
     }
 
     private fun checkForInternet(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val network = connectivityManager.activeNetwork ?: return false
             val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
@@ -127,7 +130,7 @@ class UserListFragment : Fragment(), DataAdapter.CellClickListener {
         bundle.putString("urlphoto", data.avatar)
         parentFragmentManager.setFragmentResult("userdata", bundle)
 
-        var navigationView: BottomNavigationView? =
+        val navigationView: BottomNavigationView? =
             activity?.findViewById(R.id.bNav) as BottomNavigationView?
         if (navigationView != null) {
             navigationView.selectedItemId = R.id.user_menuitem
