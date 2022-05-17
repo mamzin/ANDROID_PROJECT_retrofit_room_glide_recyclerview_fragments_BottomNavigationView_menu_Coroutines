@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import ru.mamzin.rentateamtesttask.R
 
 class UserFragment : Fragment() {
@@ -47,6 +48,8 @@ class UserFragment : Fragment() {
                 Glide.with(this)
                     .load(bundle.getString("urlphoto"))
                     .centerCrop()
+                    .error(R.drawable.glide_err)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(photo)
             }
         }
